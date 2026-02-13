@@ -11,7 +11,7 @@ marmap_to_isobath <- function(marmap,depth= -200,proj=NULL){
   if(is.null(proj)){message("No projection specified. Default to a NAD83 unprojected coordinate system.")}
   if(is.null(proj)){proj <- "+proj=longlat +datum=NAD83 +no_defs +ellps=GRS80 +towgs84=0,0,0"}
           
-  out <- noaabathy_sab%>%
+  out <- marmap%>%
          marmap::as.raster(.)%>%
          terra::rast(.)%>%
          as.contour(.,levels = depth)%>%
